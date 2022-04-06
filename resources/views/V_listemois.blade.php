@@ -2,7 +2,7 @@
 @extends ('V_sommaire')
     @section('contenu1')
       <div id="contenu">
-        <h2>Mes fiches de frais</h2>
+        <h2>Mes fiches de frais <?php echo date('Ym'); ?> </h2>
         <h3>Mois à sélectionner : </h3>
       <form action="{{ route('chemin_afficher_fiches_en_fonction_mois') }}" method="post">
         {{ csrf_field() }} <!-- laravel va ajouter un champ caché avec un token -->
