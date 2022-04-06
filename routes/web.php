@@ -11,7 +11,16 @@
 |
 */
         /*-------------------- Use case connexion---------------------------*/
+     
+Route::get('chemin_generatepdf',[
+        'as'=>'chemin_generatepdf',
+        'uses'=>'pdfgenController@show_pdf_button'
+]);
 
+Route::get('chemin_download',[
+        'as'=>'chemin_download',
+        'uses'=>'pdfgenController@dl'
+]);
 
 Route::get('/',[
         'as' => 'chemin_connexion',
@@ -41,6 +50,9 @@ Route::get('fiche_mois',[
         'as'=>'chemin_ficheMois',
         'uses'=>'connexionController@deconnecter'
 ]);
+
+
+
          /*-------------------- Use case état des frais---------------------------*/
 Route::get('selectionMois',[
         'as'=>'chemin_selectionMois',

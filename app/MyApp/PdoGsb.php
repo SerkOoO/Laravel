@@ -225,11 +225,25 @@ class PdoGsb{
 		return $laLigne;
 	}
 
+
+
+
+	public function getFicheFraisDernierMois(){
+
+		$current_month  = date('Ym');
+
+		$req = "SELECT * FROM fichefrais  inner join etat on fichefrais.idEtat = etat.id WHERE fichefrais.idEtat = 'VA' AND fichefrais.mois >= $current_month - 1";
+		$res = $this->monPdo->query($req);
+		$laLigne = $res->fetchAll();
+		return $laLigne;
+	}
+
+
 	public function getALlInfosFichesFrais_by_month($mois){
 		$mois = $mois; // A changer par le mois choisi par l'utilisateur @@@@@@
 		$req = "SELECT * FROM fichefrais inner join etat on fichefrais.idEtat = etat.id WHERE fichefrais.mois = '$mois' AND fichefrais.idEtat = 'VA'";
 		$res = $this->monPdo->query($req);
-		$laLigne = $res->fetchAll();
+		$laLigne = $res->fetchAll(PDO::FETCH_ASSOC);
 		return $laLigne;
 	}
 
